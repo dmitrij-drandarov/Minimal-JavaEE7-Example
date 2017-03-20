@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Kundenübersicht</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <h:panelGrid columns="2">
+            Vorname: <h:inputText value="#{customerView.customer.firstname}"/>
+            Nachname: <h:inputText value="#{customerView.customer.lastname}"/>
+        </h:panelGrid>
+        <h:commandButton value="click" action="#{customerView.save}"/>
+    </h:form>
+
+    <h:dataTable value="#{customerView.allCustomers}" var="customer">
+        <h:column>
+            <h:link value="#{customer.firstname}" outcome="customer">
+                <f:param name="id" value="#{customer.id}" />
+            </h:link>
+        </h:column>
+    </h:dataTable>
+</h:body>
+</html>
